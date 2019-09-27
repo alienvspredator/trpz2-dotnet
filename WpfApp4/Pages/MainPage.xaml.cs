@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp4.Core;
 
-namespace WpfApp4
+namespace WpfApp4.Pages
 {
     /// <summary>
     /// Логика взаимодействия для MainPage.xaml
@@ -24,11 +25,15 @@ namespace WpfApp4
         {
             InitializeComponent();
         }
-
         private void Readers_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Page readers = new Readers();
-            NavigationService.Navigate(readers);
+            Page readersPage = new ReadersListPage();
+            NavigationService.Navigate(readersPage);
+        }
+        private void Books_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Page booksPage = new BooksListPage();
+            NavigationService.Navigate(booksPage);
         }
     }
 }

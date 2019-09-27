@@ -4,20 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfApp4
+namespace WpfApp4.Core
 {
-    class Reader
+    public class Book
     {
-        public Reader(string name, string surname)
+        public Book(string name)
         {
             Name = name;
-            Surname = surname;
         }
 
         private string name;
-        private string surname;
 
         public string Name { get => name; set => name = value; }
-        public string Surname { get => surname; set => surname = value; }
+        public string ReleaseDate { get; set; } = "1984-03-22";
     }
 }

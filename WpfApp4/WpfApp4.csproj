@@ -63,26 +63,58 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Core\Author.cs" />
+    <Compile Include="Core\Book.cs" />
+    <Compile Include="Core\HistoryItem.cs" />
+    <Compile Include="Core\Person.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MainPage.xaml">
+    <Page Include="Pages\AuthorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Readers.xaml">
+    <Page Include="Pages\BookPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BooksListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ReaderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ReadersListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainPage.xaml.cs">
+    <Compile Include="Pages\AuthorPage.xaml.cs">
+      <DependentUpon>AuthorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BookPage.xaml.cs">
+      <DependentUpon>BookPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BooksListPage.xaml.cs">
+      <DependentUpon>BooksListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Reader.cs" />
-    <Compile Include="Readers.xaml.cs">
-      <DependentUpon>Readers.xaml</DependentUpon>
+    <Compile Include="Core\Reader.cs" />
+    <Compile Include="Pages\ReaderPage.xaml.cs">
+      <DependentUpon>ReaderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ReadersListPage.xaml.cs">
+      <DependentUpon>ReadersListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -113,6 +145,12 @@
     <Resource Include="assets\Books.jpg" />
     <Resource Include="assets\MainBackground.jpg" />
     <Resource Include="assets\reader.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="dynamic_assets\profile_images\0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dynamic_assets\books_covers\0.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
