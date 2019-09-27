@@ -18,6 +18,6 @@
     <Grid>
         <Frame Name="MainFrame" NavigationUIVisibility="Hidden" >
         </Frame>
-        <Label Name="GoBackButton" Style="{StaticResource HoveredLabel}" Content="&lt;" HorizontalAlignment="Left" VerticalAlignment="Top" Cursor="Hand" PreviewMouseLeftButtonUp="GoBackButton_PreviewMouseLeftButtonUp" Height="419" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Label Name="GoBackButton" Style="{StaticResource HoveredLabel}" Content="&lt;" Cursor="Hand" PreviewMouseLeftButtonUp="GoBackButton_PreviewMouseLeftButtonUp" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
     </Grid>
 </Window>

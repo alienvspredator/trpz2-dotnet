@@ -9,11 +9,11 @@
       Title="Page1">
 
     <Grid>
-        <ListView Name="lvReaders" HorizontalAlignment="Center" VerticalAlignment="Center" Width="560.895" Height="430" Margin="122.634,10,116.471,10">
+        <ListView Name="lvReaders" Margin="17">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Surname" DisplayMemberBinding="{Binding Surname}" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Name</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Surname}">Surname</GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

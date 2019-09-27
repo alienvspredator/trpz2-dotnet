@@ -14,7 +14,10 @@ namespace WpfApp4
             Surname = surname;
         }
 
-        public string Name;
-        public string Surname;
+        private string name;
+        private string surname;
+
+        public string Name { get => name; set => name = value; }
+        public string Surname { get => surname; set => surname = value; }
     }
 }

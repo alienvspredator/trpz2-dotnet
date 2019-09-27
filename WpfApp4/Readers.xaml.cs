@@ -22,12 +22,13 @@ namespace WpfApp4
     {
         public Readers()
         {
-            InitializeComponent();
             List<Reader> readersList = new List<Reader>
             {
                 new Reader("Danylo", "Shevchenko"),
-                new Reader("C#", "Govno")
+                new Reader("C#", "Nice")
             };
+            InitializeComponent();
+            lvReaders.DataContext = this;
             lvReaders.ItemsSource = readersList;
         }
     }
