@@ -27,7 +27,7 @@ namespace WpfApp4
 
         private void Readers_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Page readers = new Readers(this);
+            Page readers = new Readers();
             NavigationService.Navigate(readers);
         }
     }

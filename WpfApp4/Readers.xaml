@@ -9,7 +9,6 @@
       Title="Page1">
 
     <Grid>
-        <Label Content="&lt;" HorizontalAlignment="Left" VerticalAlignment="Top" Cursor="Hand" PreviewMouseLeftButtonUp="GoBack_PreviewMouseLeftButtonUp"/>
         <ListView Name="lvReaders" HorizontalAlignment="Center" VerticalAlignment="Center" Width="560.895" Height="430" Margin="122.634,10,116.471,10">
             <ListView.View>
                 <GridView>

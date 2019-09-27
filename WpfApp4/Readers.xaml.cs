@@ -20,21 +20,15 @@ namespace WpfApp4
     /// </summary>
     public partial class Readers : Page
     {
-        public Readers(Page backPage)
+        public Readers()
         {
             InitializeComponent();
-            BackPage = backPage;
-            List<Reader> readersList = new List<Reader>();
-            readersList.Add(new Reader("Danylo", "Shevchenko"));
-            readersList.Add(new Reader("C#", "Govno"));
+            List<Reader> readersList = new List<Reader>
+            {
+                new Reader("Danylo", "Shevchenko"),
+                new Reader("C#", "Govno")
+            };
             lvReaders.ItemsSource = readersList;
-        }
-
-        private readonly Page BackPage;
-
-        private void GoBack_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            NavigationService.Navigate(BackPage);
         }
     }
 }
