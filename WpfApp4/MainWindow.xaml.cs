@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp4.Pages;
+using WpfApp4.Views;
 
 namespace WpfApp4
 {
@@ -25,9 +25,22 @@ namespace WpfApp4
         {
             InitializeComponent();
             // Начальная страница.
-            Page page = new MainPage();
-            MainFrame.NavigationService.LoadCompleted += new LoadCompletedEventHandler(MainFrame_LoadCompleted);
+            Page page = new AuthPage();
             MainFrame.Navigate(page);
+            MainFrame.NavigationService.LoadCompleted += new LoadCompletedEventHandler(MainFrame_LoadCompleted);
+        }
+
+        /**
+         * Возможна ли навигация назад
+         */
+        private bool CanGoBack
+        {
+            get
+            {
+                // Блокируем навигацию на предыдущую страницу, если уже находимся на главной
+                // Не позволяет вернуться на страницу авторизации
+                return MainFrame.CanGoBack && MainFrame.Content.GetType() != typeof(MainPage);
+            }
         }
 
         /**
@@ -35,7 +48,7 @@ namespace WpfApp4
          */
         void MainFrame_LoadCompleted(object sender, NavigationEventArgs e)
         {
-            GoBackButton.Visibility = MainFrame.NavigationService.CanGoBack ? Visibility.Visible : Visibility.Hidden;
+            GoBackButton.Visibility = CanGoBack ? Visibility.Visible : Visibility.Hidden;
         }
 
         /**
@@ -43,7 +56,7 @@ namespace WpfApp4
          */
         private void GoBackButton_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (MainFrame.CanGoBack)
+            if (CanGoBack)
             {
                 MainFrame.GoBack();
             }

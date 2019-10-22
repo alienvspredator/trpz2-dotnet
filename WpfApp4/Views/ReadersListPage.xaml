@@ -1,0 +1,30 @@
+﻿<Page x:Class="WpfApp4.Views.ReadersListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:viewModels="clr-namespace:WpfApp4.ViewModels"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp4"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Page1">
+
+    <Page.Resources>
+        <Style TargetType="ListViewItem">
+            <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <ListView Name="lvReaders" Margin="17,45,17,54">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Имя</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Surname}">Фамилия</GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox Height="23" Margin="17" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Bottom"/>
+        <Button x:Name="CreateReader" Content="Создать" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="17,0,0,17" Click="CreateReader_Click"/>
+        <Button x:Name="RemoveReader" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="109,0,0,17" Click="RemoveReader_Click"/>
+    </Grid>
+</Page>
