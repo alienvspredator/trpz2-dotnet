@@ -1,13 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WpfApp4.Core;
+﻿using WpfApp4.Core.Command;
+using WpfApp4.Core.Data.Repository;
+using WpfApp4.Models;
+using WpfApp4.Core.Validation;
 
 namespace WpfApp4.ViewModels
 {
-    class CreateReaderViewModel : BaseViewModel
+    public class CreateReaderViewModel : BaseViewModel
     {
+        private IReaderRepository ReaderRepository { get; }
+
+        private RelayCommand createReaderCommand;
+
+        private RelayCommand updateReaderCommand;
+
+        private ReaderValidator ReaderValidator { get; }
+
+        public CreateReaderViewModel(IReaderRepository readerRepository)
+        {
+            ReaderRepository = readerRepository;
+            EditableReader = new Reader();
+            ReaderValidator = new ReaderValidator(EditableReader);
+        }
+
+        public CreateReaderViewModel(IReaderRepository readerRepository, Reader readerToEdit)
+        {
+            ReaderRepository = readerRepository;
+            EditableReader = readerToEdit;
+            ReaderValidator = new ReaderValidator(EditableReader);
+        }
+
+        public Reader EditableReader { get; set; }
+
+        public RelayCommand CreateReaderCommand
+        {
+            get => createReaderCommand ??
+                (createReaderCommand = new RelayCommand(obj =>
+                {
+                    ReaderRepository.Create(EditableReader);
+                },
+                obj => ReaderValidator.Validate()));
+        }
+
+        public RelayCommand UpdateReaderCommand
+        {
+            get => updateReaderCommand ??
+                (updateReaderCommand = new RelayCommand(obj =>
+                {
+                    ReaderRepository.Update(EditableReader);
+                },
+                obj => ReaderValidator.Validate()));
+        }
     }
 }

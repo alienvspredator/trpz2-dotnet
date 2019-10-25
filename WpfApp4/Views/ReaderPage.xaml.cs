@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp4.Models;
+using WpfApp4.ViewModels;
 
 namespace WpfApp4.Views
 {
@@ -24,37 +25,11 @@ namespace WpfApp4.Views
         public ReaderPage(Reader reader)
         {
             InitializeComponent();
-            DataContext = this;
-            Reader = reader;
-            //List<HistoryItem> historyItems = new List<HistoryItem>()
-            {
-            };
-
-            //lvHistory.ItemsSource = historyItems;
+            var viewModel = new ReaderDetailsViewModel(reader);
+            DataContext = viewModel;
         }
 
         public readonly Reader Reader;
-
-        public string DisplayedProfileImage
-        {
-            get => "";
-            //get => Reader.ImageSource;
-        }
-
-        public string DisplayedProfileName
-        {
-            get => $"{Reader.Name} {Reader.Surname}";
-        }
-
-        public string DisplayedProfileReputation
-        {
-            get => "Хорошая";
-        }
-
-        public string DisplayedProfileHomeplace
-        {
-            get => "Политехничная, 41";
-        }
 
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {

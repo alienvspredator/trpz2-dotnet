@@ -1,13 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WpfApp4.Core;
+﻿using WpfApp4.Core.Command;
+using WpfApp4.Core.Data.Repository;
+using WpfApp4.Models;
+using WpfApp4.Core.Validation;
 
 namespace WpfApp4.ViewModels
 {
-    class ReaderDetailsViewModel : BaseViewModel
+    public class ReaderDetailsViewModel : BaseViewModel
     {
+        public ReaderDetailsViewModel(Reader reader)
+        {
+            Reader = reader;
+            Fullname = $"{Reader.Name} {Reader.Surname}";
+        }
+
+        public Reader Reader { get; }
+
+        public string Fullname { get; }
     }
 }

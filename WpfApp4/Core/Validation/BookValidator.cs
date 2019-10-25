@@ -21,6 +21,11 @@ namespace WpfApp4.Core.Validation
             return !string.IsNullOrWhiteSpace(ValidableBook.Name);
         }
 
+        private bool ValidateReleaseDate()
+        {
+            return ValidableBook.ReleaseDate != null;
+        }
+
         public bool Validate()
         {
             return ValidateAuthors() && ValidateTitle();

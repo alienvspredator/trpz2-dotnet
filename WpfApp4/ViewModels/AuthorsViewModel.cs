@@ -9,8 +9,6 @@ namespace WpfApp4.ViewModels
     {
         #region Fields
 
-        IAuthorRepository Repository { get; set; }
-
         private List<Author> authors;
 
         private Author selectedAuthor;
@@ -18,6 +16,8 @@ namespace WpfApp4.ViewModels
         #endregion
 
         #region Properties
+
+        IAuthorRepository Repository { get; set; }
 
         public List<Author> Authors
         {

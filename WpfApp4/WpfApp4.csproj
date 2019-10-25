@@ -94,6 +94,7 @@
     <Compile Include="Core\Validation\AuthorValidator.cs" />
     <Compile Include="Core\Validation\BookValidator.cs" />
     <Compile Include="Core\Validation\IEntityValidator.cs" />
+    <Compile Include="Core\Validation\ReaderValidator.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\IModel.cs" />
     <Compile Include="Core\IModelLoader.cs" />

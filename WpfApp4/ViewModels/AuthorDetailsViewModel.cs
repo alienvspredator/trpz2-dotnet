@@ -18,13 +18,13 @@ namespace WpfApp4.ViewModels
 
         #region Properties
 
-        public Author CurrentAuthor
+        public Author Author
         {
             get { return currentAuthor; }
             set
             {
                 currentAuthor = value;
-                OnPropertyChanged("CurrentAuthor");
+                RaisePropertyChanged();
             }
         }
 

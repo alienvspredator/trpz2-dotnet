@@ -19,7 +19,7 @@
             <Label Content="Информация" HorizontalAlignment="Left" Margin="17" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"/>
             <Label Content="{Binding DisplayedProfileName}" x:Name="ProfileName" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" Margin="17,59,0,0" Height="26"/>
             <Label Content="Список книг" HorizontalAlignment="Left" Margin="164,97,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="513"/>
-            <ListView x:Name="lvBools" Margin="164,159,123,10">
+            <ListView x:Name="lvBools" Margin="164,159,123,10" ItemsSource="{Binding Author.Books}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Название"/>
@@ -28,7 +28,7 @@
                 </ListView.View>
             </ListView>
             <TextBox Height="26" Margin="164,128,123,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Bottom"/>
-            <Label Content="№123456" HorizontalAlignment="Left" Margin="164,26,0,0" VerticalAlignment="Top" Width="235"/>
+            <Label Content="{Binding Author.Id, StringFormat='#{0}'}" HorizontalAlignment="Left" Margin="164,26,0,0" VerticalAlignment="Top" Width="235"/>
         </Grid>
 
     </Grid>

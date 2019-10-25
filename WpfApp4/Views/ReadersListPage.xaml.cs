@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using WpfApp4.Core.Data.Repository;
+using WpfApp4.Core.Service;
 using WpfApp4.Models;
+using WpfApp4.ViewModels;
 
 namespace WpfApp4.Views
 {
@@ -21,20 +15,18 @@ namespace WpfApp4.Views
     /// </summary>
     public partial class ReadersListPage : Page
     {
+        private Library context;
+
         public ReadersListPage()
         {
-            List<Reader> readersList = new List<Reader>
-            {
-            };
-
             InitializeComponent();
-            DataContext = this;
-            lvReaders.ItemsSource = readersList;
+            context = DbConnectionService.GetConnection();
+            DataContext = new ReadersListViewModel(new ReaderRepository(context));
         }
 
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Reader reader = ((ListViewItem)sender).Content as Reader;
+            Reader reader = GetSelectedReader();
             if (reader == null)
             {
                 return;
@@ -44,9 +36,14 @@ namespace WpfApp4.Views
             NavigationService.Navigate(readerPage);
         }
 
+        private Reader GetSelectedReader()
+        {
+            return (DataContext as ReadersListViewModel).SelectedReader;
+        }
+
         private void CreateReader_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new CreateReaderPage());
+            NavigationService.Navigate(new CreateReaderPage(context));
         }
 
         private void RemoveReader_Click(object sender, RoutedEventArgs e)

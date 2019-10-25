@@ -10,6 +10,18 @@
       Title="CreateReaderPage">
 
     <Grid>
-        
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Margin="0" Orientation="Vertical" VerticalAlignment="Top">
+                <Label Content="Имя:" VerticalAlignment="Top" RenderTransformOrigin="0.921,0.962" VerticalContentAlignment="Bottom"/>
+                <TextBox Text="{Binding EditableReader.Name}" Height="23" TextWrapping="Wrap" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom"/>
+            </StackPanel>
+            <StackPanel Margin="0,54,0,0" Orientation="Vertical" VerticalAlignment="Top">
+                <Label Content="Фамилия:" VerticalAlignment="Top"/>
+                <TextBox Text="{Binding EditableReader.Surname}" Height="23" TextWrapping="Wrap" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom"/>
+            </StackPanel>
+            <StackPanel Margin="0,108,0,0" Orientation="Vertical" VerticalAlignment="Top"/>
+            <Button x:Name="Submit" Content="Готово" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Submit_Click" Grid.IsSharedSizeScope="True" Width="210" Margin="0,162,0,0"/>
+        </Grid>
+
     </Grid>
 </Page>

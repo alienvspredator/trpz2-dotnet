@@ -15,16 +15,16 @@
         </Style>
     </Page.Resources>
     <Grid>
-        <ListView Name="lvReaders" Margin="17,45,17,54">
+        <ListView Name="lvReaders" Margin="17,45,17,54" ItemsSource="{Binding Readers}" SelectedItem="{Binding SelectedReader}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Имя</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Surname}">Фамилия</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}">Имя</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Surname}">Фамилия</GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
         <TextBox Height="23" Margin="17" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Bottom"/>
         <Button x:Name="CreateReader" Content="Создать" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="17,0,0,17" Click="CreateReader_Click"/>
-        <Button x:Name="RemoveReader" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="109,0,0,17" Click="RemoveReader_Click"/>
+        <Button x:Name="RemoveReader" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="109,0,0,17" Command="{Binding DeleteReaderCommand}"/>
     </Grid>
 </Page>

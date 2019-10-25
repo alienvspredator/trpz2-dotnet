@@ -24,29 +24,8 @@ namespace WpfApp4.Views
         public BookPage(Book book)
         {
             InitializeComponent();
-            DataContext = this;
-            List<Book> books = new List<Book>
-            {
-            };
-
-            lvAuthors.ItemsSource = new List<Author>
-            {
-            };
-
-            Book = book;
-            //List<HistoryItem> history = new List<HistoryItem>()
-            {
-            };
-
-            //lvHistory.ItemsSource = history;
+            
         }
-
-        public Book Book;
-
-        public string DisplayedBookPopularity { get => "Высокая"; }
-
-        public string DisplayedBookStatus { get => "У читателя"; }
-        public string DisplayedBookName { get => Book.Name; }
 
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
