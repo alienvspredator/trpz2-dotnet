@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.ObjectModel;
 using WpfApp4.Models;
-using WpfApp4.Core;
-using WpfApp4.Network;
+using WpfApp4.Core.Data.Repository;
 
 namespace WpfApp4.ViewModels
 {
@@ -14,9 +9,9 @@ namespace WpfApp4.ViewModels
     {
         #region Fields
 
-        private readonly IModelLoader modelLoader;
+        IAuthorRepository Repository { get; set; }
 
-        private ObservableCollection<Author> authors;
+        private List<Author> authors;
 
         private Author selectedAuthor;
 
@@ -24,13 +19,13 @@ namespace WpfApp4.ViewModels
 
         #region Properties
 
-        public ObservableCollection<Author> Authors
+        public List<Author> Authors
         {
-            get { return authors; }
+            get => authors;
             set
             {
                 authors = value;
-                OnPropertyChanged("Authors");
+                RaisePropertyChanged();
             }
         }
 
@@ -40,17 +35,21 @@ namespace WpfApp4.ViewModels
             set
             {
                 selectedAuthor = value;
-                OnPropertyChanged("SelectedAuthor");
+                RaisePropertyChanged();
             }
         }
 
         #endregion
 
-        public AuthorsViewModel()
+        private void UpdateList()
         {
-            modelLoader = new DatabaseModelLoader("trpz_admin", "aaa");
+            Authors = Repository.GetAll().ToList();
+        }
 
-            Authors = modelLoader.LoadAuthors();
+        public AuthorsViewModel(IAuthorRepository authorRepository)
+        {
+            Repository = authorRepository;
+            UpdateList();
         }
     }
 }

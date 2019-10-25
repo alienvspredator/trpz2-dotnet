@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using WpfApp4.Models;
+using WpfApp4.Core.Service;
+using WpfApp4.Core.Data.Repository;
+using WpfApp4.ViewModels;
 
 namespace WpfApp4.Views
 {
@@ -20,9 +13,28 @@ namespace WpfApp4.Views
     /// </summary>
     public partial class CreateBookPage : Page
     {
-        public CreateBookPage()
+        private Library Context { get; }
+
+        public CreateBookPage(Book bookToEdit, Library context)
         {
             InitializeComponent();
+            Context = context;
+
+            CreateBookViewModel viewModel = new CreateBookViewModel(new BookRepository(Context), bookToEdit);
+            Submit.Command = viewModel.UpdateBookCommand;
+
+            DataContext = viewModel;
+        }
+
+        public CreateBookPage(Library context)
+        {
+            InitializeComponent();
+            Context = context;
+
+            CreateBookViewModel viewModel = new CreateBookViewModel(new BookRepository(Context));
+            Submit.Command = viewModel.CreateBookCommand;
+
+            DataContext = viewModel;
         }
 
         private void CreateAuthor_Click(object sender, RoutedEventArgs e)
@@ -37,12 +49,13 @@ namespace WpfApp4.Views
 
         private void AddAuthorToBook_Click(object sender, RoutedEventArgs e)
         {
-
+            AuthorListPage authorListPage = new AuthorListPage(DataContext as CreateBookViewModel, Context);
+            NavigationService.Navigate(authorListPage);
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.GoBack();
         }
     }
 }

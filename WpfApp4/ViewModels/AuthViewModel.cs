@@ -20,6 +20,8 @@ namespace WpfApp4.ViewModels
 
         private string password;
 
+        private Dictionary<string, List<string>> errors = new Dictionary<string, List<string>>();
+
         #endregion
 
         #region Properties
@@ -54,13 +56,42 @@ namespace WpfApp4.ViewModels
             }
         }
 
-        public ICommand LoginCommand
+        public bool HasErrors
         {
-            get => new RelayCommand(obj => Login() );
+            get => errors.Values.FirstOrDefault(l => l.Count > 0) != null;
         }
 
         #endregion
 
+        #region Events
+
+        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
+
+        #endregion
+
+        #region Methods
+
+        private void Validate()
+        {
+            if (!errors.TryGetValue("Name", out List<string> errorsList))
+            {
+
+            }
+        }
+
+        public void RaiseErrorsChanged(string propertyName)
+        {
+            EventHandler<DataErrorsChangedEventArgs> handler = ErrorsChanged;
+            if (handler == null)
+            {
+                return;
+            }
+
+            var arg = new DataErrorsChangedEventArgs(propertyName);
+            handler.Invoke(this, arg);
+        }
+
+        // TODO: Log in
         public void Login()
         {
             if (!string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password))
@@ -75,16 +106,12 @@ namespace WpfApp4.ViewModels
             }
         }
 
-        public List<ValidationResult> ErrorsContainer { get; set; } = new List<ValidationResult>();
-
-        public IEnumerable GetErrors(string propertyName)
+        public System.Collections.IEnumerable GetErrors(string propertyName)
         {
-            return ErrorsContainer
+            errors.TryGetValue(propertyName, out List<string> errorsList);
+            return errorsList;
         }
 
-        public bool HasErrors
-        {
-            get => ErrorsContainer.Count > 0;
-        }
+        #endregion
     }
 }

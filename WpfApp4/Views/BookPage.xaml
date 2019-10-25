@@ -35,15 +35,16 @@
             </ListView>
             <TextBox Height="26" Margin="164,128,123,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Bottom"/>
             <Label Content="№123456" HorizontalAlignment="Left" Margin="164,26,0,0" VerticalAlignment="Top" Width="235"/>
-            <Image Source="pack://application:,,,/dynamic_assets/books_covers/0.png" HorizontalAlignment="Right" Height="113" Margin="0,17,17,0" VerticalAlignment="Top" Width="76"/>
             <Label Content="{Binding DisplayedBookName}" HorizontalAlignment="Right" Margin="0,17,98,0" VerticalAlignment="Top" Width="225" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" Height="26"/>
             <ListView x:Name="lvAuthors" Margin="17,0,0,17" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="170" Width="121">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding Fullname}" Header="Авторы"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Имя"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Surname}" Header="Фамилия"/>
                     </GridView>
                 </ListView.View>
             </ListView>
+            <Label Content="Авторы" HorizontalAlignment="Left" Margin="17,232,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         </Grid>
     </Grid>
 </Page>

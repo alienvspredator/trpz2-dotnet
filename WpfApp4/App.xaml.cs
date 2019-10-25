@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using WpfApp4.Core;
+using WpfApp4.Models;
 
 namespace WpfApp4
 {
@@ -14,6 +15,5 @@ namespace WpfApp4
     /// </summary>
     public partial class App : Application
     {
-        public static IModelLoader ModelLoader { get; set; }
     }
 }

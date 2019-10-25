@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using WpfApp4.Core.Data.Repository;
+using WpfApp4.Core.Service;
 using WpfApp4.Models;
+using WpfApp4.ViewModels;
 
 namespace WpfApp4.Views
 {
@@ -21,21 +15,18 @@ namespace WpfApp4.Views
     /// </summary>
     public partial class BooksListPage : Page
     {
+        private Library context;
+
         public BooksListPage()
         {
             InitializeComponent();
-            DisplayedBooks = new List<Book>
-            {
-            };
-
-            lvBools.ItemsSource = DisplayedBooks;
+            context = DbConnectionService.GetConnection();
+            DataContext = new BookListViewModel(new BookRepository(context));
         }
-
-        public List<Book> DisplayedBooks { get; set; }
 
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Book book = ((ListViewItem)sender).Content as Book;
+            Book book = GetSelectedBook();
             if (book == null)
             {
                 return;
@@ -45,14 +36,30 @@ namespace WpfApp4.Views
             NavigationService.Navigate(bookPage);
         }
 
+        private Book GetSelectedBook()
+        {
+            return (DataContext as BookListViewModel).SelectedBook;
+        }
+
         private void CreateBook_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new CreateBookPage());
+            NavigationService.Navigate(new CreateBookPage(context));
         }
 
         private void RemoveBook_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void EditBook_Click(object sender, RoutedEventArgs e)
+        {
+            Book book = GetSelectedBook();
+            if (book == null)
+            {
+                return;
+            }
+
+            NavigationService.Navigate(new CreateBookPage(book, context));
         }
     }
 }

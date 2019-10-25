@@ -17,7 +17,7 @@
     <Grid>
         <Grid>
             <TextBox Height="23" Margin="17" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Bottom"/>
-            <ListView x:Name="lvBools" Margin="17,45,17,54">
+            <ListView x:Name="lvBools" Margin="17,45,17,54" ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Название"/>
@@ -26,8 +26,8 @@
                 </ListView.View>
             </ListView>
             <Button Name="CreateBook" Content="Создать" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="17,0,0,17" Click="CreateBook_Click"/>
-            <Button Name="RemoveBook" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="109,0,0,17" Click="RemoveBook_Click"/>
+            <Button Name="RemoveBook" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="109,0,0,17" Command="{Binding DeleteBookCommand}" />
+            <Button Name="EditBook" Content="Изменить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="200,0,0,17" Click="EditBook_Click" />
         </Grid>
-
     </Grid>
 </Page>
