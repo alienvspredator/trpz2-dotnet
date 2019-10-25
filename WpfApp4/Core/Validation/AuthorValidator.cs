@@ -23,7 +23,7 @@ namespace WpfApp4.Core.Validation
 
         private bool ValidateSurname()
         {
-            return !string.IsNullOrWhiteSpace(ValidableAuthor.Name);
+            return !string.IsNullOrWhiteSpace(ValidableAuthor.Surname);
         }
 
         public bool Validate()

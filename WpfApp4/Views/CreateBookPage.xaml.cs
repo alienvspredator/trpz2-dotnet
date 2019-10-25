@@ -39,7 +39,7 @@ namespace WpfApp4.Views
 
         private void CreateAuthor_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new CreateAuthorPage());
+            NavigationService.Navigate(new CreateAuthorPage(Context));
         }
 
         private void RemoveAuthor_Click(object sender, RoutedEventArgs e)

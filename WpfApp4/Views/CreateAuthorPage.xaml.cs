@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp4.Models;
+using WpfApp4.ViewModels;
+using WpfApp4.Core.Data.Repository;
 
 namespace WpfApp4.Views
 {
@@ -20,14 +23,33 @@ namespace WpfApp4.Views
     /// </summary>
     public partial class CreateAuthorPage : Page
     {
-        public CreateAuthorPage()
+        private Library Context { get; }
+
+        public CreateAuthorPage(Author authorToEdit, Library context)
         {
             InitializeComponent();
+            Context = context;
+
+            CreateAuthorViewModel viewModel = new CreateAuthorViewModel(new AuthorRepository(Context), authorToEdit);
+            Submit.Command = viewModel.UpdateAuthorCommand;
+
+            DataContext = viewModel;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public CreateAuthorPage(Library context)
         {
+            InitializeComponent();
+            Context = context;
 
+            CreateAuthorViewModel viewModel = new CreateAuthorViewModel(new AuthorRepository(Context));
+            Submit.Command = viewModel.CreateAuthorCommand;
+
+            DataContext = viewModel;
+        }
+
+        private void Submit_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

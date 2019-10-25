@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using WpfApp4.Core.Command;
 using WpfApp4.Core.Data.Repository;
 using WpfApp4.Models;
@@ -21,7 +22,7 @@ namespace WpfApp4.ViewModels
         public CreateBookViewModel(IBookRepository bookRepository)
         {
             BookRepository = bookRepository;
-            EditableBook = new Book();
+            EditableBook = new Book() { ReleaseDate = DateTime.Now };
             BookValidator = new BookValidator(EditableBook);
         }
 

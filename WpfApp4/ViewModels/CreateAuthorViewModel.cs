@@ -22,6 +22,13 @@ namespace WpfApp4.ViewModels
             AuthorValidator = new AuthorValidator(EditableAuthor);
         }
 
+        public CreateAuthorViewModel(IAuthorRepository authorRepository, Author authorToEdit)
+        {
+            AuthorRepository = authorRepository;
+            EditableAuthor = authorToEdit;
+            AuthorValidator = new AuthorValidator(EditableAuthor);
+        }
+
         public Author EditableAuthor { get; set; }
 
         public RelayCommand CreateAuthorCommand
