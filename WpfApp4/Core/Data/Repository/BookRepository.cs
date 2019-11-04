@@ -33,10 +33,10 @@ namespace WpfApp4.Core.Data.Repository
             return Context.Books.ToList();
         }
 
-        public override Book GetById(int id)
-        {
-            return Context.Books.Find(id);
-        }
+        //public override Book GetById(int id)
+        //{
+        //    return Context.Books.Find(id);
+        //}
 
         public IEnumerable<Book> GetByReleaseDate(DateTime date)
         {

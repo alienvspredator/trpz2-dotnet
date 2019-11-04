@@ -2,9 +2,8 @@
 
 namespace WpfApp4.Models
 {
-    public partial class HistoryItem
+    public partial class HistoryItem : BaseEntity<int>
     {
-        public int Id { get; set; }
         public DateTime ReturnedDate { get; set; }
         public DateTime? RealReturnedDate { get; set; }
         public DateTime TakenDate { get; set; }

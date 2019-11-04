@@ -7,7 +7,7 @@ using WpfApp4.Models;
 
 namespace WpfApp4.Core.Data.Repository
 {
-    public interface IBookRepository : IRepository<Book>
+    public interface IBookRepository : IRepository<Book, int>
     {
         // IEnumerable<Book> GetByAuthor(Author author);
 

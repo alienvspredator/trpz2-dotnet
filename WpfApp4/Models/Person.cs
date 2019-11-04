@@ -1,8 +1,7 @@
 ﻿namespace WpfApp4.Models
 {
-    public abstract class Person
+    public abstract class Person : BaseEntity<int>
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
     }

@@ -33,10 +33,10 @@ namespace WpfApp4.Core.Data.Repository
             return Context.People.OfType<Author>().ToList();
         }
 
-        public override Author GetById(int id)
-        {
-            return Context.People.Find(id) as Author;
-        }
+        //public override Author GetById(int id)
+        //{
+        //    return Context.People.Find(id) as Author;
+        //}
 
         public Author GetByName(string name)
         {

@@ -12,5 +12,6 @@ namespace WpfApp4.Models
 
         public virtual ICollection<Book> Book { get; set; }
         public virtual ICollection<HistoryItem> History { get; set; }
+        public virtual ReaderCard Card { get; set; }
     }
 }

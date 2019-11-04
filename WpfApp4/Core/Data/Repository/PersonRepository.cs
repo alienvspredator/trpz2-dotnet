@@ -29,10 +29,10 @@ namespace WpfApp4.Core.Data.Repository
             return Context.People.ToList();
         }
 
-        override public Person GetById(int id)
-        {
-            return Context.People.Find(id);
-        }
+        //override public Person GetById(int id)
+        //{
+        //    return Context.People.Find(id);
+        //}
 
         public Person GetByName(string name)
         {

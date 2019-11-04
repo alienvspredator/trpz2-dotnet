@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
+using WpfApp4.Models;
 
 namespace WpfApp4.Core.Data.Repository
 {
-    public abstract class Repository<C, T> : IRepository<T>
-        where T : class
+    public abstract class Repository<C, TEntity> : IRepository<TEntity, int>
         where C : DbContext
+        where TEntity : BaseEntity<int>
     {
         public Repository(C context)
         {
@@ -19,14 +21,21 @@ namespace WpfApp4.Core.Data.Repository
             Context.Dispose();
         }
 
-        public abstract T Create(T entity);
+        public abstract TEntity Create(TEntity entity);
 
-        public abstract void Delete(T entity);
+        public abstract void Delete(TEntity entity);
 
-        public abstract IEnumerable<T> GetAll();
+        public abstract IEnumerable<TEntity> GetAll();
 
-        public abstract T GetById(int id);
+        public virtual TEntity GetById(int id)
+        {
+            var query = from e in Context.Set<TEntity>()
+                    where e.Id == id
+                    select e;
 
-        public abstract void Update(T entity);
+            return query.FirstOrDefault();
+        }
+
+        public abstract void Update(TEntity entity);
     }
 }

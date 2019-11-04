@@ -32,10 +32,10 @@ namespace WpfApp4.Core.Data.Repository
             return Context.People.OfType<Reader>().ToList();
         }
 
-        public override Reader GetById(int id)
-        {
-            return Context.People.Find(id) as Reader;
-        }
+        //public override Reader GetById(int id)
+        //{
+        //    return Context.People.Find(id) as Reader;
+        //}
 
         public Reader GetByName(string name)
         {

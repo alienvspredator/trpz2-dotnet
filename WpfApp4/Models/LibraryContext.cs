@@ -32,6 +32,10 @@ namespace WpfApp4.Models
                 m.MapInheritedProperties();
                 m.ToTable("Readers");
             });
+
+            modelBuilder.Entity<ReaderCard>()
+                .HasRequired(m => m.Owner)
+                .WithRequiredDependent(m => m.Card);
         }
 
         // Добавьте DbSet для каждого типа сущности, который требуется включить в модель. Дополнительные сведения 
@@ -42,6 +46,8 @@ namespace WpfApp4.Models
         public virtual DbSet<Person> People { get; set; }
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<HistoryItem> History { get; set; }
+        public virtual DbSet<Charter> Charters { get; set; }
+        public virtual DbSet<ReaderCard> ReaderCards { get; set; }
     }
 
     // public class MyEntity

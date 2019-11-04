@@ -32,10 +32,10 @@ namespace WpfApp4.Core.Data.Repository
             return Context.History.ToList();
         }
 
-        public override HistoryItem GetById(int id)
-        {
-            return Context.History.Find(id);
-        }
+        //public override HistoryItem GetById(int id)
+        //{
+        //    return Context.History.Find(id);
+        //}
 
         public override void Update(HistoryItem entity)
         {
