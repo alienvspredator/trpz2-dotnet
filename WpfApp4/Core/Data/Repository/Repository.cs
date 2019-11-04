@@ -12,7 +12,7 @@ namespace WpfApp4.Core.Data.Repository
     {
         private bool disposed = false;
 
-        public Repository(TContext context)
+        protected Repository(TContext context)
         {
             Context = context;
         }
