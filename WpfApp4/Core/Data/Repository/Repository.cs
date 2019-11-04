@@ -1,14 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using WpfApp4.Models;
 
 namespace WpfApp4.Core.Data.Repository
 {
-    public abstract class Repository<TContext, TEntity> : IRepository<TEntity, int>
+    public abstract class Repository<TContext, TEntity> : IRepository<TEntity, int>, IDisposable
         where TContext : DbContext
         where TEntity : BaseEntity<int>
     {
+        private bool disposed = false;
+
         public Repository(TContext context)
         {
             Context = context;
@@ -16,9 +19,25 @@ namespace WpfApp4.Core.Data.Repository
 
         protected TContext Context { get; set; }
 
-        public virtual void Dispose()
+        protected virtual void Dispose(bool disposing)
         {
-            Context.Dispose();
+            if (disposed)
+            {
+                return;
+            }
+
+            if (disposing)
+            {
+                Context.Dispose();
+            }
+
+            disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         public abstract TEntity Create(TEntity entity);
