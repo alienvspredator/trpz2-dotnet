@@ -12,9 +12,9 @@ namespace WpfApp4.Views
     /// </summary>
     public partial class CreateAuthorPage : Page
     {
-        private Library Context { get; }
+        private LibraryContext Context { get; }
 
-        public CreateAuthorPage(Author authorToEdit, Library context)
+        public CreateAuthorPage(Author authorToEdit, LibraryContext context)
         {
             InitializeComponent();
             Context = context;
@@ -25,7 +25,7 @@ namespace WpfApp4.Views
             DataContext = viewModel;
         }
 
-        public CreateAuthorPage(Library context)
+        public CreateAuthorPage(LibraryContext context)
         {
             InitializeComponent();
             Context = context;

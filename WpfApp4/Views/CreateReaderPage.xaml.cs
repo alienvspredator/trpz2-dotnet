@@ -12,9 +12,9 @@ namespace WpfApp4.Views
     /// </summary>
     public partial class CreateReaderPage : Page
     {
-        private Library Context { get; }
+        private LibraryContext Context { get; }
 
-        public CreateReaderPage(Reader readerToEdit, Library context)
+        public CreateReaderPage(Reader readerToEdit, LibraryContext context)
         {
             InitializeComponent();
             Context = context;
@@ -25,7 +25,7 @@ namespace WpfApp4.Views
             DataContext = viewModel;
         }
 
-        public CreateReaderPage(Library context)
+        public CreateReaderPage(LibraryContext context)
         {
             InitializeComponent();
             Context = context;

@@ -36,14 +36,14 @@ namespace WpfApp4.Core.Service
             return context.Database.Exists();
         }
 
-        public static Library GetConnection()
+        public static LibraryContext GetConnection()
         {
             if (connectionString == null)
             {
                 throw new Exception("Credentials is empty");
             }
 
-            return new Library(connectionString);
+            return new LibraryContext(connectionString);
         }
     }
 }

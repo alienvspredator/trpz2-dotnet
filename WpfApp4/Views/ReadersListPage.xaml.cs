@@ -15,7 +15,7 @@ namespace WpfApp4.Views
     /// </summary>
     public partial class ReadersListPage : Page
     {
-        private Library context;
+        private LibraryContext context;
 
         public ReadersListPage()
         {

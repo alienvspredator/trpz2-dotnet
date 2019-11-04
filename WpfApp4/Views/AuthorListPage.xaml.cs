@@ -15,7 +15,7 @@ namespace WpfApp4.Views
     {
         private CreateBookViewModel createBookViewModel;
 
-        public AuthorListPage(CreateBookViewModel createBookViewModel, Library context)
+        public AuthorListPage(CreateBookViewModel createBookViewModel, LibraryContext context)
         {
             InitializeComponent();
             this.createBookViewModel = createBookViewModel;

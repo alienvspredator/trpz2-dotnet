@@ -8,9 +8,9 @@ using WpfApp4.Models;
 
 namespace WpfApp4.Core.Data.Repository
 {
-    public class AuthorRepository : Repository<Library, Author>, IAuthorRepository
+    public class AuthorRepository : Repository<LibraryContext, Author>, IAuthorRepository
     {
-        public AuthorRepository(Library context) : base(context)
+        public AuthorRepository(LibraryContext context) : base(context)
         {
         }
 

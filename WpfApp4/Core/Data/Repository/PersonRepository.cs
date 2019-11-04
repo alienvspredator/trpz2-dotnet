@@ -5,9 +5,9 @@ using System.Data.Entity;
 
 namespace WpfApp4.Core.Data.Repository
 {
-    public class PersonRepository : Repository<Library, Person>, IPersonRepository<Person>
+    public class PersonRepository : Repository<LibraryContext, Person>, IPersonRepository<Person>
     {
-        public PersonRepository(Library context) : base(context)
+        public PersonRepository(LibraryContext context) : base(context)
         {
         }
 

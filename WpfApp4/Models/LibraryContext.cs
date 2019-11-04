@@ -2,7 +2,7 @@
 
 namespace WpfApp4.Models
 {
-    public class Library : DbContext
+    public class LibraryContext : DbContext
     {
         // Контекст настроен для использования строки подключения "Library" из файла конфигурации  
         // приложения (App.config или Web.config). По умолчанию эта строка подключения указывает на базу данных 
@@ -10,13 +10,28 @@ namespace WpfApp4.Models
         // 
         // Если требуется выбрать другую базу данных или поставщик базы данных, измените строку подключения "Library" 
         // в файле конфигурации приложения.
-        public Library()
+        public LibraryContext()
             : base("name=Library")
         {
         }
 
-        public Library(string connectionString) : base(connectionString)
+        public LibraryContext(string connectionString) : base(connectionString)
         {
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Author>().Map(m =>
+            {
+                m.MapInheritedProperties();
+                m.ToTable("Authors");
+            });
+
+            modelBuilder.Entity<Reader>().Map(m =>
+            {
+                m.MapInheritedProperties();
+                m.ToTable("Readers");
+            });
         }
 
         // Добавьте DbSet для каждого типа сущности, который требуется включить в модель. Дополнительные сведения 

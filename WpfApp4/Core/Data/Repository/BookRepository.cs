@@ -9,9 +9,9 @@ using WpfApp4.Models;
 
 namespace WpfApp4.Core.Data.Repository
 {
-    public class BookRepository : Repository<Library, Book>, IBookRepository
+    public class BookRepository : Repository<LibraryContext, Book>, IBookRepository
     {
-        public BookRepository(Library context) : base(context)
+        public BookRepository(LibraryContext context) : base(context)
         {
         }
 

@@ -8,9 +8,9 @@ using System.Data.Entity;
 
 namespace WpfApp4.Core.Data.Repository
 {
-    public class HistoryRepository : Repository<Library, HistoryItem>, IHistoryRepository
+    public class HistoryRepository : Repository<LibraryContext, HistoryItem>, IHistoryRepository
     {
-        public HistoryRepository(Library context) : base(context)
+        public HistoryRepository(LibraryContext context) : base(context)
         {
         }
 

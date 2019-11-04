@@ -7,28 +7,10 @@ using WpfApp4.Models;
 
 namespace WpfApp4.Core.Validation
 {
-    class AuthorValidator : IEntityValidator
+    class AuthorValidator : PersonValidator<Author>
     {
-        private Author ValidableAuthor { get; set; }
-
-        public AuthorValidator(Author author)
+        public AuthorValidator(Author author) : base(author)
         {
-            ValidableAuthor = author;
-        }
-
-        private bool ValidateName()
-        {
-            return !string.IsNullOrWhiteSpace(ValidableAuthor.Name);
-        }
-
-        private bool ValidateSurname()
-        {
-            return !string.IsNullOrWhiteSpace(ValidableAuthor.Surname);
-        }
-
-        public bool Validate()
-        {
-            return ValidateName() && ValidateSurname();
         }
     }
 }

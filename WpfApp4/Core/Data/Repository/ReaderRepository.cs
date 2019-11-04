@@ -8,9 +8,9 @@ using System.Data.Entity;
 
 namespace WpfApp4.Core.Data.Repository
 {
-    public class ReaderRepository : Repository<Library, Reader>, IReaderRepository
+    public class ReaderRepository : Repository<LibraryContext, Reader>, IReaderRepository
     {
-        public ReaderRepository(Library context) : base(context)
+        public ReaderRepository(LibraryContext context) : base(context)
         {
         }
 

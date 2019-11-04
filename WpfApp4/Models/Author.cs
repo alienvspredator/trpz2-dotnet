@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace WpfApp4.Models
 {
@@ -8,7 +9,6 @@ namespace WpfApp4.Models
         {
             Books = new HashSet<Book>();
         }
-
 
         public virtual ICollection<Book> Books { get; set; }
     }

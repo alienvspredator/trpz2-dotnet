@@ -94,9 +94,21 @@
     <Compile Include="Core\Validation\AuthorValidator.cs" />
     <Compile Include="Core\Validation\BookValidator.cs" />
     <Compile Include="Core\Validation\IEntityValidator.cs" />
+    <Compile Include="Core\Validation\PersonValidator.cs" />
     <Compile Include="Core\Validation\ReaderValidator.cs" />
+    <Compile Include="Migrations\201910251238318_AuthorBirthDay.cs" />
+    <Compile Include="Migrations\201910251238318_AuthorBirthDay.designer.cs">
+      <DependentUpon>201910251238318_AuthorBirthDay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910251253283_AbstractPerson.cs" />
+    <Compile Include="Migrations\201910251253283_AbstractPerson.designer.cs">
+      <DependentUpon>201910251253283_AbstractPerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910260054284_InheritanceStrategyToTPC.cs" />
+    <Compile Include="Migrations\201910260054284_InheritanceStrategyToTPC.designer.cs">
+      <DependentUpon>201910260054284_InheritanceStrategyToTPC.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\IModel.cs" />
     <Compile Include="Core\IModelLoader.cs" />
     <Compile Include="Core\Data\Repository\IPersonRepository.cs" />
     <Compile Include="Core\Data\Repository\IRepository.cs" />
@@ -108,7 +120,7 @@
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\HistoryItem.cs" />
-    <Compile Include="Models\Library.cs" />
+    <Compile Include="Models\LibraryContext.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Reader.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -228,6 +240,15 @@
     </Compile>
     <EmbeddedResource Include="Migrations\201910240227539_Initial.resx">
       <DependentUpon>201910240227539_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910251238318_AuthorBirthDay.resx">
+      <DependentUpon>201910251238318_AuthorBirthDay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910251253283_AbstractPerson.resx">
+      <DependentUpon>201910251253283_AbstractPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910260054284_InheritanceStrategyToTPC.resx">
+      <DependentUpon>201910260054284_InheritanceStrategyToTPC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

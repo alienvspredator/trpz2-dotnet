@@ -13,9 +13,9 @@ namespace WpfApp4.Views
     /// </summary>
     public partial class CreateBookPage : Page
     {
-        private Library Context { get; }
+        private LibraryContext Context { get; }
 
-        public CreateBookPage(Book bookToEdit, Library context)
+        public CreateBookPage(Book bookToEdit, LibraryContext context)
         {
             InitializeComponent();
             Context = context;
@@ -26,7 +26,7 @@ namespace WpfApp4.Views
             DataContext = viewModel;
         }
 
-        public CreateBookPage(Library context)
+        public CreateBookPage(LibraryContext context)
         {
             InitializeComponent();
             Context = context;

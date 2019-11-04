@@ -13,7 +13,7 @@
             <EventTrigger.Actions>
                 <BeginStoryboard>
                     <Storyboard TargetProperty="Width" TargetName="ReadersButton">
-                        <DoubleAnimation From="143" To="150"
+                        <DoubleAnimation From="144" To="154"
                                          AutoReverse="True"
                                          RepeatBehavior="0:0:10"
                                          Duration="0:0:3" />

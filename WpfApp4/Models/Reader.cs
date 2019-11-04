@@ -10,7 +10,6 @@ namespace WpfApp4.Models
             History = new HashSet<HistoryItem>();
         }
 
-
         public virtual ICollection<Book> Book { get; set; }
         public virtual ICollection<HistoryItem> History { get; set; }
     }
