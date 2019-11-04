@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WpfApp4.Core.Service;
 using WpfApp4.Models;
 
 namespace WpfApp4.Core.Data.Repository
@@ -40,17 +37,17 @@ namespace WpfApp4.Core.Data.Repository
 
         public IEnumerable<Book> GetByReleaseDate(DateTime date)
         {
-            var query = from b in Context.Books
-                        where b.ReleaseDate == date
-                        select b;
+            IQueryable<Book> query = from b in Context.Books
+                                     where b.ReleaseDate == date
+                                     select b;
             return query.ToList();
         }
 
         public Book GetByTitle(string title)
         {
-            var query = from b in Context.Books
-                        where b.Name == title
-                        select b;
+            IQueryable<Book> query = from b in Context.Books
+                                     where b.Name == title
+                                     select b;
             return query.FirstOrDefault();
         }
 

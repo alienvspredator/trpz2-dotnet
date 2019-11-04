@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using WpfApp4.Models;
-using System.Collections.ObjectModel;
 
 namespace WpfApp4.Core
 {

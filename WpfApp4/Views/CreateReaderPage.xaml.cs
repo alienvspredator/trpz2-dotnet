@@ -1,9 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using WpfApp4.Core.Data.Repository;
 using WpfApp4.Models;
 using WpfApp4.ViewModels;
-using WpfApp4.Core.Data.Repository;
 
 namespace WpfApp4.Views
 {

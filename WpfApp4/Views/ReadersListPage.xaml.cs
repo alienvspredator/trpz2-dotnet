@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
@@ -15,7 +14,7 @@ namespace WpfApp4.Views
     /// </summary>
     public partial class ReadersListPage : Page
     {
-        private LibraryContext context;
+        private readonly LibraryContext context;
 
         public ReadersListPage()
         {

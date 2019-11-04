@@ -5,16 +5,16 @@ using WpfApp4.Models;
 
 namespace WpfApp4.Core.Data.Repository
 {
-    public abstract class Repository<C, TEntity> : IRepository<TEntity, int>
-        where C : DbContext
+    public abstract class Repository<TContext, TEntity> : IRepository<TEntity, int>
+        where TContext : DbContext
         where TEntity : BaseEntity<int>
     {
-        public Repository(C context)
+        public Repository(TContext context)
         {
             Context = context;
         }
 
-        protected C Context { get; set; }
+        protected TContext Context { get; set; }
 
         public virtual void Dispose()
         {
@@ -29,9 +29,9 @@ namespace WpfApp4.Core.Data.Repository
 
         public virtual TEntity GetById(int id)
         {
-            var query = from e in Context.Set<TEntity>()
-                    where e.Id == id
-                    select e;
+            IQueryable<TEntity> query = from e in Context.Set<TEntity>()
+                                        where e.Id == id
+                                        select e;
 
             return query.FirstOrDefault();
         }

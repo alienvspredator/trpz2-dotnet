@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using WpfApp4.Models;
 using WpfApp4.Core.Data.Repository;
+using WpfApp4.Models;
 
 namespace WpfApp4.ViewModels
 {
-    class AuthorsViewModel : BaseViewModel
+    internal class AuthorsViewModel : BaseViewModel
     {
         #region Fields
 
@@ -17,7 +17,7 @@ namespace WpfApp4.ViewModels
 
         #region Properties
 
-        IAuthorRepository Repository { get; set; }
+        private IAuthorRepository Repository { get; set; }
 
         public List<Author> Authors
         {

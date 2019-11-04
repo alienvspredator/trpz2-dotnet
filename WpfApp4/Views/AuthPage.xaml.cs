@@ -22,7 +22,7 @@ namespace WpfApp4.Views
             string password = PasswordBox.Password;
 
             DbConnectionService.SetCredentials(username, password);
-            var context = DbConnectionService.GetConnection();
+            Models.LibraryContext context = DbConnectionService.GetConnection();
 
             if (!DbConnectionService.TestConnection(context))
             {

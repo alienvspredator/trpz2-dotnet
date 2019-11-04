@@ -1,21 +1,25 @@
 ﻿using System;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using WpfApp4.Models;
 
 namespace WpfApp4.Core.Service
 {
-    class DbConnectionService
+    internal class DbConnectionService
     {
         private static string connectionString;
 
-        public static void SetCredentials(string username, string password)
+        private static string GetSetting(string settingKey)
         {
-            string dataSource = ConfigurationManager.AppSettings["data-source"];
-            string initialCatalog = ConfigurationManager.AppSettings["initial-catalog"];
+            return ConfigurationManager.AppSettings[settingKey];
+        }
 
-            var builder = new SqlConnectionStringBuilder
+        private static string BuildCredentials(string username, string password)
+        {
+            string dataSource = GetSetting("data-source");
+            string initialCatalog = GetSetting("initial-catalog");
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder
             {
                 DataSource = dataSource,
                 ConnectTimeout = 1000,
@@ -28,7 +32,12 @@ namespace WpfApp4.Core.Service
                 TrustServerCertificate = true,
             };
 
-            connectionString = builder.ConnectionString;
+            return builder.ConnectionString;
+        }
+
+        public static void SetCredentials(string username, string password)
+        {
+            connectionString = BuildCredentials(username, password);
         }
 
         public static bool TestConnection(DbContext context)

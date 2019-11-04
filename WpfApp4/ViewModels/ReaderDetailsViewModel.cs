@@ -1,7 +1,4 @@
-﻿using WpfApp4.Core.Command;
-using WpfApp4.Core.Data.Repository;
-using WpfApp4.Models;
-using WpfApp4.Core.Validation;
+﻿using WpfApp4.Models;
 
 namespace WpfApp4.ViewModels
 {

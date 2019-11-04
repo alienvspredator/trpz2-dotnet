@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using WpfApp4.Models;
-using WpfApp4.Core.Data.Repository;
 using WpfApp4.Core.Command;
+using WpfApp4.Core.Data.Repository;
+using WpfApp4.Models;
 
 namespace WpfApp4.ViewModels
 {
@@ -35,7 +34,8 @@ namespace WpfApp4.ViewModels
 
         public IBookRepository BookRepository;
 
-        public List<Book> Books { 
+        public List<Book> Books
+        {
             get => books;
             set
             {
@@ -49,24 +49,18 @@ namespace WpfApp4.ViewModels
             Books = BookRepository.GetAll().ToList();
         }
 
-        public RelayCommand DeleteBookCommand
-        {
-            get => deleteBookCommand ??
+        public RelayCommand DeleteBookCommand => deleteBookCommand ??
                 (deleteBookCommand = new RelayCommand(obj =>
                 {
                     BookRepository.Delete(SelectedBook);
                     UpdateList();
                 },
                 obj => SelectedBook != null));
-        }
 
-        public RelayCommand UpdateBooksCommand
-        {
-            get => updateBooksCommand ??
+        public RelayCommand UpdateBooksCommand => updateBooksCommand ??
                 (updateBooksCommand = new RelayCommand(obj =>
                 {
                     UpdateList();
                 }));
-        }
     }
 }

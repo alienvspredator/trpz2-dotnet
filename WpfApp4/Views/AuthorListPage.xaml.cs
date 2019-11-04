@@ -1,9 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
-using WpfApp4.Models;
-using WpfApp4.Core.Service;
 using WpfApp4.Core.Data.Repository;
+using WpfApp4.Models;
 using WpfApp4.ViewModels;
 
 namespace WpfApp4.Views
@@ -13,7 +12,7 @@ namespace WpfApp4.Views
     /// </summary>
     public partial class AuthorListPage : Page
     {
-        private CreateBookViewModel createBookViewModel;
+        private readonly CreateBookViewModel createBookViewModel;
 
         public AuthorListPage(CreateBookViewModel createBookViewModel, LibraryContext context)
         {
@@ -24,7 +23,7 @@ namespace WpfApp4.Views
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            var selectedAuthor = (DataContext as AuthorsViewModel).SelectedAuthor;
+            Author selectedAuthor = (DataContext as AuthorsViewModel).SelectedAuthor;
             if (selectedAuthor != null)
             {
                 createBookViewModel.AddAuthorCommand.Execute(selectedAuthor);

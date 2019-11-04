@@ -1,8 +1,7 @@
 ﻿namespace WpfApp4.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class InheritanceStrategyToTPC : DbMigration
     {
         public override void Up()
@@ -15,20 +14,20 @@
             CreateTable(
                 "dbo.Readers",
                 c => new
-                    {
-                        Id = c.Int(nullable: false),
-                        Name = c.String(),
-                        Surname = c.String(),
-                    })
+                {
+                    Id = c.Int(nullable: false),
+                    Name = c.String(),
+                    Surname = c.String(),
+                })
                 .PrimaryKey(t => t.Id);
-            
+
             AlterColumn("dbo.Authors", "Id", c => c.Int(nullable: false));
             AddPrimaryKey("dbo.Authors", "Id");
             AddForeignKey("dbo.AuthorBooks", "Author_Id", "dbo.Authors", "Id", cascadeDelete: true);
             DropColumn("dbo.Authors", "BirthDay");
             DropColumn("dbo.Authors", "Discriminator");
         }
-        
+
         public override void Down()
         {
             AddColumn("dbo.Authors", "Discriminator", c => c.String(nullable: false, maxLength: 128));

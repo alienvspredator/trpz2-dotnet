@@ -4,14 +4,8 @@ namespace WpfApp4.Models
 {
     public partial class Reader : Person
     {
-        public Reader()
-        {
-            Book = new HashSet<Book>();
-            History = new HashSet<HistoryItem>();
-        }
-
-        public virtual ICollection<Book> Book { get; set; }
-        public virtual ICollection<HistoryItem> History { get; set; }
+        public virtual ICollection<Book> Book { get; set; } = new HashSet<Book>();
+        public virtual ICollection<HistoryItem> History { get; set; } = new HashSet<HistoryItem>();
         public virtual ReaderCard Card { get; set; }
     }
 }

@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WpfApp4.Core;
-using System.Windows.Input;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace WpfApp4.ViewModels
 {
-    class AuthViewModel : BaseViewModel, INotifyDataErrorInfo
+    internal class AuthViewModel : BaseViewModel, INotifyDataErrorInfo
     {
         #region Fields
 
@@ -20,7 +15,7 @@ namespace WpfApp4.ViewModels
 
         private string password;
 
-        private Dictionary<string, List<string>> errors = new Dictionary<string, List<string>>();
+        private readonly Dictionary<string, List<string>> errors = new Dictionary<string, List<string>>();
 
         #endregion
 
@@ -56,10 +51,7 @@ namespace WpfApp4.ViewModels
             }
         }
 
-        public bool HasErrors
-        {
-            get => errors.Values.FirstOrDefault(l => l.Count > 0) != null;
-        }
+        public bool HasErrors => errors.Values.FirstOrDefault(l => l.Count > 0) != null;
 
         #endregion
 
@@ -87,7 +79,7 @@ namespace WpfApp4.ViewModels
                 return;
             }
 
-            var arg = new DataErrorsChangedEventArgs(propertyName);
+            DataErrorsChangedEventArgs arg = new DataErrorsChangedEventArgs(propertyName);
             handler.Invoke(this, arg);
         }
 
@@ -99,7 +91,8 @@ namespace WpfApp4.ViewModels
                 try
                 {
 
-                } catch
+                }
+                catch
                 {
 
                 }

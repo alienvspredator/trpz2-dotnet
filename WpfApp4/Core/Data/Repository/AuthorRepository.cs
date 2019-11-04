@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WpfApp4.Models;
 
 namespace WpfApp4.Core.Data.Repository
@@ -40,9 +37,9 @@ namespace WpfApp4.Core.Data.Repository
 
         public Author GetByName(string name)
         {
-            var query = from p in Context.People
-                        where p.Name == name
-                        select p;
+            IQueryable<Person> query = from p in Context.People
+                                       where p.Name == name
+                                       select p;
             return query.OfType<Author>().FirstOrDefault();
         }
 

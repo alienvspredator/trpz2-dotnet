@@ -11,9 +11,19 @@ namespace WpfApp4.Core.Validation
             ValidableBook = book;
         }
 
+        private bool IsAuthorsListValid()
+        {
+            return ValidableBook.Authors != null;
+        }
+
+        private bool IsAuthorsListNotEmpty()
+        {
+            return IsAuthorsListValid() && ValidableBook.Authors.Count > 0;
+        }
+
         private bool ValidateAuthors()
         {
-            return ValidableBook.Authors != null && ValidableBook.Authors.Count > 0;
+            return IsAuthorsListNotEmpty();
         }
 
         private bool ValidateTitle()

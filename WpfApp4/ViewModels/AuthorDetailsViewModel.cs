@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WpfApp4.Core;
-using WpfApp4.Models;
+﻿using WpfApp4.Models;
 
 namespace WpfApp4.ViewModels
 {
-    class AuthorDetailsViewModel : BaseViewModel
+    internal class AuthorDetailsViewModel : BaseViewModel
     {
         #region Fields
 
@@ -20,7 +14,7 @@ namespace WpfApp4.ViewModels
 
         public Author Author
         {
-            get { return currentAuthor; }
+            get => currentAuthor;
             set
             {
                 currentAuthor = value;

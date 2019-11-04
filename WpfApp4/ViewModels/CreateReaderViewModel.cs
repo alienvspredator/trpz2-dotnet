@@ -1,7 +1,7 @@
 ﻿using WpfApp4.Core.Command;
 using WpfApp4.Core.Data.Repository;
-using WpfApp4.Models;
 using WpfApp4.Core.Validation;
+using WpfApp4.Models;
 
 namespace WpfApp4.ViewModels
 {
@@ -31,24 +31,18 @@ namespace WpfApp4.ViewModels
 
         public Reader EditableReader { get; set; }
 
-        public RelayCommand CreateReaderCommand
-        {
-            get => createReaderCommand ??
+        public RelayCommand CreateReaderCommand => createReaderCommand ??
                 (createReaderCommand = new RelayCommand(obj =>
                 {
                     ReaderRepository.Create(EditableReader);
                 },
                 obj => ReaderValidator.Validate()));
-        }
 
-        public RelayCommand UpdateReaderCommand
-        {
-            get => updateReaderCommand ??
+        public RelayCommand UpdateReaderCommand => updateReaderCommand ??
                 (updateReaderCommand = new RelayCommand(obj =>
                 {
                     ReaderRepository.Update(EditableReader);
                 },
                 obj => ReaderValidator.Validate()));
-        }
     }
 }

@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using WpfApp4.Models;
-using WpfApp4.Core.Data.Repository;
 using WpfApp4.Core.Command;
+using WpfApp4.Core.Data.Repository;
+using WpfApp4.Models;
 
 namespace WpfApp4.ViewModels
 {
@@ -50,24 +49,18 @@ namespace WpfApp4.ViewModels
             Readers = ReaderRepository.GetAll().ToList();
         }
 
-        public RelayCommand DeleteReaderCommand
-        {
-            get => deleteReaderCommand ??
+        public RelayCommand DeleteReaderCommand => deleteReaderCommand ??
                 (deleteReaderCommand = new RelayCommand(obj =>
                 {
                     ReaderRepository.Delete(SelectedReader);
                     UpdateList();
                 },
                 obj => SelectedReader != null));
-        }
 
-        public RelayCommand UpdateReadersCommand
-        {
-            get => updateReadersCommand ??
+        public RelayCommand UpdateReadersCommand => updateReadersCommand ??
                 (updateReadersCommand = new RelayCommand(obj =>
                 {
                     UpdateList();
                 }));
-        }
     }
 }

@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Collections.Generic;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WpfApp4.Models;
 
 namespace WpfApp4.Views
@@ -29,12 +19,9 @@ namespace WpfApp4.Views
             //lvBools.ItemsSource = Author.Books;
         }
 
-        public string DisplayedProfileName
-        {
-            get => "123"; // get => Author.Fullname;
-        }
+        public string DisplayedProfileName => "123"; // get => Author.Fullname;
 
-        public List<Book> DisplayedBooks { get => new List<Book>(); /* get => Author.Books; */ }
+        public List<Book> DisplayedBooks => new List<Book>(); /* get => Author.Books; */
 
         public Author Author { get; set; }
 
