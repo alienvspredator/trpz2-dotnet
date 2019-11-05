@@ -2,19 +2,23 @@
 
 namespace WpfApp4.Models
 {
+    /// <summary>
+    /// Контекст БД библиотеки
+    /// </summary>
     public class LibraryContext : DbContext
     {
-        // Контекст настроен для использования строки подключения "Library" из файла конфигурации  
-        // приложения (App.config или Web.config). По умолчанию эта строка подключения указывает на базу данных 
-        // "WpfApp4.Models.Library" в экземпляре LocalDb. 
-        // 
-        // Если требуется выбрать другую базу данных или поставщик базы данных, измените строку подключения "Library" 
-        // в файле конфигурации приложения.
+        /// <summary>
+        /// Инициализирует контекст БД из App.config
+        /// </summary>
         public LibraryContext()
             : base("name=Library")
         {
         }
 
+        /// <summary>
+        /// Инициализирует подключение по строке подключения
+        /// </summary>
+        /// <param name="connectionString">Строка подключения к БД</param>
         public LibraryContext(string connectionString) : base(connectionString)
         {
         }
@@ -38,21 +42,10 @@ namespace WpfApp4.Models
                 .WithRequiredDependent(m => m.Card);
         }
 
-        // Добавьте DbSet для каждого типа сущности, который требуется включить в модель. Дополнительные сведения 
-        // о настройке и использовании модели Code First см. в статье http://go.microsoft.com/fwlink/?LinkId=390109.
-
-        // public virtual DbSet<MyEntity> MyEntities { get; set; }
-
         public virtual DbSet<Person> People { get; set; }
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<HistoryItem> History { get; set; }
         public virtual DbSet<Charter> Charters { get; set; }
         public virtual DbSet<ReaderCard> ReaderCards { get; set; }
     }
-
-    // public class MyEntity
-    // {
-    //     public int Id { get; set; }
-    //     public string Name { get; set; }
-    // }
 }

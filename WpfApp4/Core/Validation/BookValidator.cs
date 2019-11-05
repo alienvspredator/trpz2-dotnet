@@ -2,10 +2,17 @@
 
 namespace WpfApp4.Core.Validation
 {
-    public class BookValidator : IEntityValidator
+    /// <summary>
+    /// Валидатор книги
+    /// </summary>
+    public class BookValidator : IEntityValidator<Book, int>
     {
         private Book ValidableBook { get; set; }
 
+        /// <summary>
+        /// Инициализирует экземпляр валидатора книги
+        /// </summary>
+        /// <param name="book">Книга для валидации</param>
         public BookValidator(Book book)
         {
             ValidableBook = book;
@@ -36,9 +43,14 @@ namespace WpfApp4.Core.Validation
             return ValidableBook.ReleaseDate != null;
         }
 
+
+        /// <summary>
+        /// Производит валидацию
+        /// </summary>
+        /// <returns>Прошла ли книга валидацию</returns>
         public bool Validate()
         {
-            return ValidateAuthors() && ValidateTitle();
+            return ValidateAuthors() && ValidateTitle() && ValidateReleaseDate();
         }
     }
 }

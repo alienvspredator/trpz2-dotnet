@@ -125,7 +125,6 @@
     <Compile Include="Models\Charter.cs" />
     <Compile Include="Models\ReaderCard.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="Core\IModelLoader.cs" />
     <Compile Include="Core\Data\Repository\IPersonRepository.cs" />
     <Compile Include="Core\Data\Repository\IRepository.cs" />
     <Compile Include="Migrations\Configuration.cs" />
