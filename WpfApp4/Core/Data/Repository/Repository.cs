@@ -41,11 +41,26 @@ namespace WpfApp4.Core.Data.Repository
             GC.SuppressFinalize(this);
         }
 
-        public abstract TEntity Create(TEntity entity);
+        public virtual TEntity Create(TEntity entity)
+        {
+            TEntity insertedEntity = Context.Set<TEntity>().Add(entity);
+            Context.SaveChanges();
+            return insertedEntity;
+        }
 
-        public abstract void Delete(TEntity entity);
+        public virtual void Delete(TEntity entity)
+        {
+            Context.Set<TEntity>().Remove(entity);
+            Context.SaveChanges();
+        }
 
-        public abstract IEnumerable<TEntity> GetAll();
+        public virtual IEnumerable<TEntity> GetAll()
+        {
+            IQueryable<TEntity> query = from e in Context.Set<TEntity>()
+                                        select e;
+
+            return query.ToList();
+        }
 
         public virtual TEntity GetById(TId id)
         {
@@ -56,6 +71,10 @@ namespace WpfApp4.Core.Data.Repository
             return query.FirstOrDefault();
         }
 
-        public abstract void Update(TEntity entity);
+        public virtual void Update(TEntity entity)
+        {
+            Context.Entry(entity).State = EntityState.Modified;
+            Context.SaveChanges();
+        }
     }
 }

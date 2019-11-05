@@ -1,52 +1,34 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using WpfApp4.Models;
 
 namespace WpfApp4.Core.Data.Repository
 {
+    /// <summary>
+    /// Репозиторий авторов
+    /// </summary>
     public class AuthorRepository : PersonRepository<Author>, IAuthorRepository
     {
+        /// <summary>
+        /// Инициализирует экземпляр класса AuthorRepository
+        /// </summary>
+        /// <param name="context">Контекст подключения к БД</param>
         public AuthorRepository(LibraryContext context) : base(context)
         {
         }
 
-        public override Author Create(Author entity)
+        /// <summary>
+        /// Выбирает список авторов по книге
+        /// </summary>
+        /// <param name="book">Книга, по которой выполняется поиск</param>
+        /// <returns>Список авторов</returns>
+        public IEnumerable<Author> GetByBook(Book book)
         {
+            IQueryable<Author> query = from a in Context.Set<Author>()
+                                       where a.Books.Any(b => b.Id == book.Id)
+                                       select a;
 
-            Author author = Context.People.Add(entity) as Author;
-            Context.SaveChanges();
-            return author;
-        }
-
-        public override void Delete(Author entity)
-        {
-            Context.People.Remove(entity);
-            Context.SaveChanges();
-        }
-
-        public override IEnumerable<Author> GetAll()
-        {
-            return Context.People.OfType<Author>().ToList();
-        }
-
-        //public override Author GetById(int id)
-        //{
-        //    return Context.People.Find(id) as Author;
-        //}
-
-        //public Author GetByName(string name)
-        //{
-        //    IQueryable<Person> query = from p in Context.People
-        //                               where p.Name == name
-        //                               select p;
-        //    return query.OfType<Author>().FirstOrDefault();
-        //}
-
-        public override void Update(Author entity)
-        {
-            Context.Entry(entity).State = EntityState.Modified;
-            Context.SaveChanges();
+            return query.ToList();
         }
     }
 }
