@@ -6,9 +6,10 @@ using WpfApp4.Models;
 
 namespace WpfApp4.Core.Data.Repository
 {
-    public abstract class Repository<TContext, TEntity> : IRepository<TEntity, int>, IDisposable
+    public abstract class Repository<TContext, TEntity, TId> : IRepository<TEntity, TId>, IDisposable
         where TContext : DbContext
-        where TEntity : BaseEntity<int>
+        where TEntity : BaseEntity<TId>
+        where TId : struct
     {
         private bool disposed = false;
 
@@ -46,10 +47,10 @@ namespace WpfApp4.Core.Data.Repository
 
         public abstract IEnumerable<TEntity> GetAll();
 
-        public virtual TEntity GetById(int id)
+        public virtual TEntity GetById(TId id)
         {
             IQueryable<TEntity> query = from e in Context.Set<TEntity>()
-                                        where e.Id == id
+                                        where e.Id.Equals(id)
                                         select e;
 
             return query.FirstOrDefault();

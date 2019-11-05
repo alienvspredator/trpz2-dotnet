@@ -8,7 +8,7 @@ namespace WpfApp4.Core.Data.Repository
         where TId : struct
     {
         IEnumerable<TEntity> GetAll();
-        TEntity GetById(int id);
+        TEntity GetById(TId id);
         TEntity Create(TEntity entity);
         void Update(TEntity entity);
         void Delete(TEntity entity);

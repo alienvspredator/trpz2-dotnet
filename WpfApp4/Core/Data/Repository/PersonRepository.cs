@@ -5,28 +5,29 @@ using WpfApp4.Models;
 
 namespace WpfApp4.Core.Data.Repository
 {
-    public class PersonRepository : Repository<LibraryContext, Person>, IPersonRepository<Person>
+    public abstract class PersonRepository<TPersonEntity> : Repository<LibraryContext, TPersonEntity, int>, IPersonRepository<TPersonEntity>
+        where TPersonEntity : Person
     {
-        public PersonRepository(LibraryContext context) : base(context)
+        protected PersonRepository(LibraryContext context) : base(context)
         {
         }
 
-        public override Person Create(Person entity)
+        public override TPersonEntity Create(TPersonEntity entity)
         {
-            Person person = Context.People.Add(entity);
+            TPersonEntity insertedEntity = Context.Set<TPersonEntity>().Add(entity);
             Context.SaveChanges();
-            return person;
+            return insertedEntity;
         }
 
-        public override void Delete(Person entity)
+        public override void Delete(TPersonEntity entity)
         {
-            Context.People.Remove(entity);
+            Context.Set<TPersonEntity>().Remove(entity);
             Context.SaveChanges();
         }
 
-        public override IEnumerable<Person> GetAll()
+        public override IEnumerable<TPersonEntity> GetAll()
         {
-            return Context.People.ToList();
+            return Context.Set<TPersonEntity>().ToList();
         }
 
         //override public Person GetById(int id)
@@ -34,15 +35,15 @@ namespace WpfApp4.Core.Data.Repository
         //    return Context.People.Find(id);
         //}
 
-        public Person GetByName(string name)
+        public TPersonEntity GetByName(string name)
         {
-            IQueryable<Person> query = from p in Context.People
-                                       where p.Name == name
-                                       select p;
+            IQueryable<TPersonEntity> query = from p in Context.Set<TPersonEntity>()
+                                              where p.Name == name
+                                              select p;
             return query.FirstOrDefault();
         }
 
-        public override void Update(Person entity)
+        public override void Update(TPersonEntity entity)
         {
             Context.Entry(entity).State = EntityState.Modified;
             Context.SaveChanges();

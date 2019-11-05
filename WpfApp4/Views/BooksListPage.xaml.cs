@@ -3,7 +3,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
 using WpfApp4.Core.Data.Repository;
-using WpfApp4.Core.Service;
 using WpfApp4.Models;
 using WpfApp4.ViewModels;
 
@@ -14,13 +13,13 @@ namespace WpfApp4.Views
     /// </summary>
     public partial class BooksListPage : Page
     {
-        private readonly LibraryContext context;
+        private LibraryContext Context { get; set; }
 
-        public BooksListPage()
+        public BooksListPage(LibraryContext context)
         {
             InitializeComponent();
-            context = DbConnectionService.GetConnection();
-            DataContext = new BookListViewModel(new BookRepository(context));
+            Context = context;
+            DataContext = new BookListViewModel(new BookRepository(Context));
         }
 
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -42,7 +41,7 @@ namespace WpfApp4.Views
 
         private void CreateBook_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new CreateBookPage(context));
+            NavigationService.Navigate(new CreateBookPage(Context));
         }
 
         private void RemoveBook_Click(object sender, RoutedEventArgs e)
@@ -58,7 +57,7 @@ namespace WpfApp4.Views
                 return;
             }
 
-            NavigationService.Navigate(new CreateBookPage(book, context));
+            NavigationService.Navigate(new CreateBookPage(book, Context));
         }
     }
 }

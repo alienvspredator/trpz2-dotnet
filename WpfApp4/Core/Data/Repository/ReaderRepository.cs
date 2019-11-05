@@ -5,7 +5,7 @@ using WpfApp4.Models;
 
 namespace WpfApp4.Core.Data.Repository
 {
-    public class ReaderRepository : Repository<LibraryContext, Reader>, IReaderRepository
+    public class ReaderRepository : PersonRepository<Reader>, IReaderRepository
     {
         public ReaderRepository(LibraryContext context) : base(context)
         {
@@ -34,13 +34,13 @@ namespace WpfApp4.Core.Data.Repository
         //    return Context.People.Find(id) as Reader;
         //}
 
-        public Reader GetByName(string name)
-        {
-            IQueryable<Person> query = from p in Context.People
-                                       where p.Name == name
-                                       select p;
-            return query.OfType<Reader>().FirstOrDefault();
-        }
+        //public Reader GetByName(string name)
+        //{
+        //    IQueryable<Person> query = from p in Context.People
+        //                               where p.Name == name
+        //                               select p;
+        //    return query.OfType<Reader>().FirstOrDefault();
+        //}
 
         public override void Update(Reader entity)
         {

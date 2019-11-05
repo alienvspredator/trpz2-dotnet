@@ -3,7 +3,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
 using WpfApp4.Core.Data.Repository;
-using WpfApp4.Core.Service;
 using WpfApp4.Models;
 using WpfApp4.ViewModels;
 
@@ -14,13 +13,13 @@ namespace WpfApp4.Views
     /// </summary>
     public partial class ReadersListPage : Page
     {
-        private readonly LibraryContext context;
+        private LibraryContext Context { get; set; }
 
-        public ReadersListPage()
+        public ReadersListPage(LibraryContext context)
         {
             InitializeComponent();
-            context = DbConnectionService.GetConnection();
-            DataContext = new ReadersListViewModel(new ReaderRepository(context));
+            Context = context;
+            DataContext = new ReadersListViewModel(new ReaderRepository(Context));
         }
 
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -42,7 +41,7 @@ namespace WpfApp4.Views
 
         private void CreateReader_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new CreateReaderPage(context));
+            NavigationService.Navigate(new CreateReaderPage(Context));
         }
 
         private void RemoveReader_Click(object sender, RoutedEventArgs e)

@@ -6,7 +6,7 @@ using WpfApp4.Models;
 
 namespace WpfApp4.Core.Data.Repository
 {
-    public class BookRepository : Repository<LibraryContext, Book>, IBookRepository
+    public class BookRepository : Repository<LibraryContext, Book, int>, IBookRepository
     {
         public BookRepository(LibraryContext context) : base(context)
         {
