@@ -6,7 +6,7 @@ namespace WpfApp4.Core.Validation
     /// Валидатор сущности, дочерней от Person
     /// </summary>
     /// <typeparam name="TPerson">Тип сущности, дочерней от Person</typeparam>
-    public class PersonValidator<TPerson> : IEntityValidator<TPerson, int> where TPerson : Person
+    public class PersonValidator<TPerson> : IEntityValidator<TPerson> where TPerson : Person
     {
         private TPerson ValidablePerson { get; set; }
 

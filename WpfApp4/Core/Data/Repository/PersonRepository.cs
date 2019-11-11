@@ -7,7 +7,7 @@ namespace WpfApp4.Core.Data.Repository
     /// Базовый класс репозитория сущностей, дочерних от Person
     /// </summary>
     /// <typeparam name="TPersonEntity">Тип дочерней сущности</typeparam>
-    public abstract class PersonRepository<TPersonEntity> : Repository<LibraryContext, TPersonEntity, int>, IPersonRepository<TPersonEntity>
+    public abstract class PersonRepository<TPersonEntity> : Repository<LibraryContext, TPersonEntity>, IPersonRepository<TPersonEntity>
         where TPersonEntity : Person
     {
         /// <summary>

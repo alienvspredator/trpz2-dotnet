@@ -5,7 +5,7 @@ namespace WpfApp4.Core.Data.Repository
     /// <summary>
     /// Интерфейс репозитория истории взятия книг
     /// </summary>
-    public interface IHistoryRepository : IRepository<HistoryItem, int>
+    public interface IHistoryRepository : IRepository<HistoryItem>
     {
     }
 }

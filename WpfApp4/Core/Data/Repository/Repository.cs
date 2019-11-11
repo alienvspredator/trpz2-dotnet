@@ -11,11 +11,9 @@ namespace WpfApp4.Core.Data.Repository
     /// </summary>
     /// <typeparam name="TContext">Тип контекста БД</typeparam>
     /// <typeparam name="TEntity">Тип сущности</typeparam>
-    /// <typeparam name="TId">Тип первичного ключа сущности</typeparam>
-    public abstract class Repository<TContext, TEntity, TId> : IRepository<TEntity, TId>, IDisposable
+    public abstract class Repository<TContext, TEntity> : IRepository<TEntity>, IDisposable
         where TContext : DbContext
-        where TEntity : BaseEntity<TId>
-        where TId : struct
+        where TEntity : BaseEntity
     {
         private bool disposed = false;
 
@@ -96,10 +94,10 @@ namespace WpfApp4.Core.Data.Repository
         /// </summary>
         /// <param name="id">ID сущности</param>
         /// <returns>Найденная сущность</returns>
-        public virtual TEntity GetById(TId id)
+        public virtual TEntity GetById(int id)
         {
             IQueryable<TEntity> query = from e in Context.Set<TEntity>()
-                                        where e.Id.Equals(id)
+                                        where e.Id == id
                                         select e;
 
             return query.FirstOrDefault();

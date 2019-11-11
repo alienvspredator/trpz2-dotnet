@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using WpfApp4.Core.Command;
 using WpfApp4.Core.Data.Repository;

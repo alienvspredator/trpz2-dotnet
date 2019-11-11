@@ -3,7 +3,7 @@
     /// <summary>
     /// Раздел книги
     /// </summary>
-    public partial class Charter : BaseEntity<int>
+    public partial class Charter : BaseEntity
     {
         /// <summary>
         /// Заголовок раздела

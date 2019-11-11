@@ -6,7 +6,7 @@ namespace WpfApp4.Core.Data.Repository
     /// Интерфейс репозитория для дочерних сущностей Person
     /// </summary>
     /// <typeparam name="T">Дочерняя сущность Person</typeparam>
-    public interface IPersonRepository<T> : IRepository<T, int> where T : Person
+    public interface IPersonRepository<T> : IRepository<T> where T : Person
     {
         /// <summary>
         /// Поиск человека по имени

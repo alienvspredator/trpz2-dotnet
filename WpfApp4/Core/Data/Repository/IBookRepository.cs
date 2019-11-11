@@ -7,7 +7,7 @@ namespace WpfApp4.Core.Data.Repository
     /// <summary>
     /// Интерфейс репозитория книг
     /// </summary>
-    public interface IBookRepository : IRepository<Book, int>
+    public interface IBookRepository : IRepository<Book>
     {
         /// <summary>
         /// Выполняет поиск книг по дате релиза

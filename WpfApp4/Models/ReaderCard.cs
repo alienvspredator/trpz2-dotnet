@@ -1,6 +1,6 @@
 ﻿namespace WpfApp4.Models
 {
-    public partial class ReaderCard : BaseEntity<int>
+    public partial class ReaderCard : BaseEntity
     {
         /// <summary>
         /// Владелец карты читателя

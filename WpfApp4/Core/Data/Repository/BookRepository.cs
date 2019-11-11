@@ -8,7 +8,7 @@ namespace WpfApp4.Core.Data.Repository
     /// <summary>
     /// Репозиторий книг
     /// </summary>
-    public class BookRepository : Repository<LibraryContext, Book, int>, IBookRepository
+    public class BookRepository : Repository<LibraryContext, Book>, IBookRepository
     {
         /// <summary>
         /// Инициализирует экземпляр репозитория

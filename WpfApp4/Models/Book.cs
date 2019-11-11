@@ -6,7 +6,7 @@ namespace WpfApp4.Models
     /// <summary>
     /// Книга
     /// </summary>
-    public partial class Book : BaseEntity<int>
+    public partial class Book : BaseEntity
     {
         /// <summary>
         /// Название книги

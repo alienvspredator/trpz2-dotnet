@@ -5,7 +5,7 @@ namespace WpfApp4.Models
     /// <summary>
     /// История взятия книги читателями
     /// </summary>
-    public partial class HistoryItem : BaseEntity<int>
+    public partial class HistoryItem : BaseEntity
     {
         /// <summary>
         /// Дата возврата книги (предполагаемая)

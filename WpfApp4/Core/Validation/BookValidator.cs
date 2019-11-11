@@ -5,7 +5,7 @@ namespace WpfApp4.Core.Validation
     /// <summary>
     /// Валидатор книги
     /// </summary>
-    public class BookValidator : IEntityValidator<Book, int>
+    public class BookValidator : IEntityValidator<Book>
     {
         private Book ValidableBook { get; set; }
 

@@ -5,7 +5,7 @@ namespace WpfApp4.Core.Data.Repository
     /// <summary>
     /// Репозиторий истории взятия книги
     /// </summary>
-    public class HistoryRepository : Repository<LibraryContext, HistoryItem, int>, IHistoryRepository
+    public class HistoryRepository : Repository<LibraryContext, HistoryItem>, IHistoryRepository
     {
         /// <summary>
         /// Инициализирует экземпляр репозитория истории

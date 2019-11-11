@@ -7,10 +7,8 @@ namespace WpfApp4.Core.Data.Repository
     /// Базовый интерфейс репозитория
     /// </summary>
     /// <typeparam name="TEntity">Сущность, дочерняя BaseEntity</typeparam>
-    /// <typeparam name="TId">Тип ключа сущности</typeparam>
-    public interface IRepository<TEntity, TId>
-        where TEntity : BaseEntity<TId>
-        where TId : struct
+    public interface IRepository<TEntity>
+        where TEntity : BaseEntity
     {
         /// <summary>
         /// Поиск всех сущностей
@@ -23,7 +21,7 @@ namespace WpfApp4.Core.Data.Repository
         /// </summary>
         /// <param name="id">ID сущности</param>
         /// <returns>Найденная сущность</returns>
-        TEntity GetById(TId id);
+        TEntity GetById(int id);
 
         /// <summary>
         /// Создание сущности в репозитории

@@ -3,7 +3,7 @@
     /// <summary>
     /// Базовый класс для людей
     /// </summary>
-    public abstract class Person : BaseEntity<int>
+    public abstract class Person : BaseEntity
     {
         /// <summary>
         /// Имя
